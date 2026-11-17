@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-cont">
+        <div class="roll-cont">
+            <div class="your-dice">
+                <div id="dice">
+                    <span class="dice-points"></span>
+                    
+                </div>
+            </div>
+            <div id="ROLL">
+                <button id="roll-btn" onclick="gamble()">Roll</button>
+            </div>
+            <blockquote>"Why reinvent the wheel if other people have already solved the problem for us."</blockquote>
+            <div style="height:50px;"></div>
+
+        </div>
+    </div>
+    
+    <script defer>
+        let points = 0;
+        let container = document.getElementById("dice")
+        let otherContainer = document.getElementById("ROLL")
+        function gamble() {
+            let howmany = 0
+            for (let index = 0; index < 1; index++) {
+            
+                let chance = Math.random()
+                if (chance <= 0.0000015) /*rarer than is hould be cause no money value*/ {
+                    console.log("NYERÉTLLLL")
+                    console.log(chance)
+                    console.log(howmany)
+                    otherContainer.innerHTML = `<h1>You rolled RARE arcane dice <br> (1 in 66666) </h1>`
+                    container.innerHTML = `<span class="dice-points"></span>
+                    <span class="dice-points"></span>
+                    <span class="dice-points"></span>
+                    <span class="dice-points"></span>
+                    <span class="dice-points"></span>
+                    <span class="dice-points"></span>
+                    <span class="dice-points"></span>`;
+                    break
+                    
+                }
+                else {
+                    howmany++
+                    console.log(chance)
+                    console.log("nem nyertél")
+                    let rolled = Math.floor(Math.random() * 6) + parseInt(1)
+                    document.getElementById("dice").classList.toggle("animated")
+                    /*visually changes the dice*/
+                    console.log(rolled)
+                    switch (rolled) {
+                        case 1:
+                            container.innerHTML = `<span class="dice-points"></span>`;
+                            break;
+                        case 2:
+                            container.innerHTML = `<span class="dice-points"></span>
+                                <span class="dice-points"></span>`;
+                            break;
+                        case 3:
+                            container.innerHTML = `<span class="dice-points"></span>
+                                    <span class="dice-points"></span>
+                                    <span class="dice-points"></span>`;
+                            break;
+                        case 4:
+                            container.innerHTML = `<span class="dice-points"></span>
+                                        <span class="dice-points"></span>
+                                        <span class="dice-points"></span>
+                                        <span class="dice-points"></span>`;
+                            break;
+                        case 5:
+                            container.innerHTML = `<span class="dice-points"></span>
+                                            <span class="dice-points"></span>
+                                            <span class="dice-points"></span>
+                                            <span class="dice-points"></span>
+                                            <span class="dice-points"></span>`;
+                            break;
+                        case 6:
+                            container.innerHTML = `<span class="dice-points"></span>
+                                                <span class="dice-points"></span>
+                                                <span class="dice-points"></span>
+                                                <span class="dice-points"></span>
+                                                <span class="dice-points"></span>
+                                                <span class="dice-points"></span>`;
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
